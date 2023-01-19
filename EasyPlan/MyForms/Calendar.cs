@@ -105,13 +105,18 @@ namespace Win1.MyForms
         {
             try
             {
-                var monthBack = new DateTime();
+                string query = "";
                 if (DateTime.Now.Month == 1)
-                    monthBack = new DateTime(DateTime.Now.Year - 1, 12, DateTime.Now.Day);
-                else
-                    monthBack = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, DateTime.Now.Day);
-                string query = "delete from " + TableName +
-                   " where Ending > '" + monthBack + "';";
+                {
+                    query = "DELETE FROM " + TableName + " WHERE (Year = " +
+                    (DateTime.Now.Year -1) + " AND Month < " + 11 + ")" +
+                    "OR Year < " + (DateTime.Now.Year - 1) + ";";
+                }
+                else {
+                    query = "DELETE FROM " + TableName + " WHERE (Year = " +
+                    DateTime.Now.Year + " AND Month < " + (DateTime.Now.Month - 1) + ")" +
+                    "OR Year < " + DateTime.Now.Year + ";";
+                }
                 DBhandler.ExecuteQuery(query);
                 LoadData();
             }
@@ -125,11 +130,13 @@ namespace Win1.MyForms
         void LoadData()
         {
             try
-            { 
+            {
+                hg.RemoveAll();
                 string query = "select * from " + TableName + ";";
                 List<MyEvents> eventsArr = DBhandler.GetEvents(query);
                 if (eventsArr.Count == 0)
                     empty = true;
+                    
                 else
                 {
                     empty = false;
@@ -152,7 +159,6 @@ namespace Win1.MyForms
         //This function inserts the events into the calendar.
         void AddEvents(List<MyEvents> ev)
         {
-            hg.RemoveAll();
             foreach (MyEvents e in ev)
             {
                 hg.AddEvent(new Hourglass.HourglassEvent
@@ -233,8 +239,9 @@ namespace Win1.MyForms
             try
             {
                 string query = "delete from " + TableName +
-                   " where Id='" + last.Id + "';";
+                   " where Id=" + last.Id + ";";
                 DBhandler.ExecuteQuery(query);
+                System.Threading.Thread.Sleep(50);
                 LoadData();
             }
             catch (Exception ex)

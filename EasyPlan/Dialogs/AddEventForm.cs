@@ -83,8 +83,10 @@ namespace Win1.Dialogs
                 + start + "','"
                 + end + "','"
                 + textBox.Text + "','"
-                + descBox.Text 
-                + "')";
+                + descBox.Text + "',"
+                + end.Year + ","
+                + end.Month
+                + ")";
             return query;
         }
         private string buildUpdateQuery()
