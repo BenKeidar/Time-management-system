@@ -195,6 +195,7 @@ namespace Win1
                                + " where NotifyTime='" + timeToNotify + "';";
                 DBhandler.ExecuteQuery(query);
                 myTimer.Start();
+                DBhandler.notificationNotified = true;
             }
         }
         

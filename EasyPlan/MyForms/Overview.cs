@@ -98,16 +98,16 @@ namespace Win1.MyForms
         //This function loads the task progress status.
         void LoadTasksStatus()
         {
-            if (!DBhandler.thereIsNoTasks)
-            {
-                string query = "SELECT MAX(Id) FROM Tasks;";
-                string query2 = "SELECT Count(Done) FROM Tasks WHERE Done="+1+";";
-                int total = Convert.ToInt32(DBhandler.GetEventId(query) + 1);
-                int done = Convert.ToInt32(DBhandler.GetEventId(query2));
-                SetProgress(total, done);
-            }
-            else
-                SetProgress(0, 0);
+            //if (!DBhandler.thereIsNoTasks)
+            //{
+            string query = "SELECT MAX(Id) FROM Tasks;";
+            string query2 = "SELECT Count(Done) FROM Tasks WHERE Done=" + 1+";";
+            int total = Convert.ToInt32(DBhandler.GetEventId(query) + 1);
+            int done =  Convert.ToInt32(DBhandler.GetEventId(query2));
+            SetProgress(total, done);
+            //}
+            //else
+            //    SetProgress(0, 0);
         }
 
         //This function sets the task progress status.
@@ -116,7 +116,7 @@ namespace Win1.MyForms
             double t = total, d = done;
             int res = 0;
             if(t != 0)
-                Convert.ToInt32(d / t * 100);
+                res = Convert.ToInt32(d / t * 100);
             myProgressBar.Value = res;
             if (res <= 25)
             {

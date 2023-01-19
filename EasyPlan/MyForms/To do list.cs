@@ -118,6 +118,8 @@ namespace Win1.MyForms
         {
             string query = "delete from " + TableName + ";";
             DBhandler.ExecuteQuery(query);
+            total = 0;
+            done = 0;
             LoadGV();
         }
 

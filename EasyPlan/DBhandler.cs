@@ -10,6 +10,7 @@ namespace Win1
     static class DBhandler
     {
         public static bool thereIsNoTasks = true;
+        public static bool notificationNotified = false;
         public static Dictionary<string, string> notificationsInfo = new Dictionary<string, string>();
         
         private static SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Ben Keidar\Documents\DiaryDB.mdf"";Integrated Security=True;Connect Timeout=30");
@@ -22,9 +23,11 @@ namespace Win1
         public static int GetEventId(string query) {
             conn.Open();
             SqlCommand cmd = new SqlCommand(query, conn);
-            int count = (Int32)cmd.ExecuteScalar();
+            var count = (Int32)cmd.ExecuteScalar();
             conn.Close();
-            return count;
+            if(count != null)
+                return count;
+            return 0;
         }
         public static Dictionary<string,string> GetEventFields(string query)
         {

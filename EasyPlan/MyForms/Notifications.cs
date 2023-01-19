@@ -66,6 +66,11 @@ namespace Win1.MyForms
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if (DBhandler.notificationNotified)
+            {
+                DBhandler.notificationNotified = false;
+                LoadData();
+            }
         }
 
 
