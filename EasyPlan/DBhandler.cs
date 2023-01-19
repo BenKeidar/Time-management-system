@@ -9,6 +9,7 @@ namespace Win1
     //This static class holds static methods to get/update/delete data from the DB.
     static class DBhandler
     {
+        public static bool thereIsNoTasks = true;
         public static Dictionary<string, string> notificationsInfo = new Dictionary<string, string>();
         
         private static SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Ben Keidar\Documents\DiaryDB.mdf"";Integrated Security=True;Connect Timeout=30");

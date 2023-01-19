@@ -12,7 +12,6 @@ namespace Win1.MyForms
     {
         private string TableName = "Tasks";
         int done = 0, total = 0;
-        bool empty = true;
         public To_do_list()
         {
             InitializeComponent();
@@ -45,13 +44,13 @@ namespace Win1.MyForms
             {
                 DeleteBtn.Visible = false;
                 ClearBtn.Visible = false;
-                empty = true;
+                DBhandler.thereIsNoTasks = true;
             }
             else
             {
                 DeleteBtn.Visible = true;
                 ClearBtn.Visible = true;
-                empty = false;
+                DBhandler.thereIsNoTasks = false;
                 done = 0;
                 for (int i = 0; i < total; i++)
                 {
@@ -135,7 +134,7 @@ namespace Win1.MyForms
         //This function called when the user press the Add task button and opens a new dialog to add a task.
         private void AddBtn_Click(object sender, EventArgs e)
         {
-            AddTask addTask = new AddTask(empty);
+            AddTask addTask = new AddTask(DBhandler.thereIsNoTasks);
             addTask.ShowDialog();
             LoadGV();
         }

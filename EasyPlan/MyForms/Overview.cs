@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Security.Policy;
 using System.Windows.Forms;
 using Win1.Models;
 
@@ -97,18 +98,25 @@ namespace Win1.MyForms
         //This function loads the task progress status.
         void LoadTasksStatus()
         {
-            string query = "SELECT MAX(Id) FROM Tasks;";
-            string query2 = "SELECT Count(Done) FROM Tasks WHERE Done="+1+";";
-            int total = Convert.ToInt32(DBhandler.GetEventId(query) + 1);
-            int done = Convert.ToInt32(DBhandler.GetEventId(query2));
-            SetProgress(total, done);
+            if (!DBhandler.thereIsNoTasks)
+            {
+                string query = "SELECT MAX(Id) FROM Tasks;";
+                string query2 = "SELECT Count(Done) FROM Tasks WHERE Done="+1+";";
+                int total = Convert.ToInt32(DBhandler.GetEventId(query) + 1);
+                int done = Convert.ToInt32(DBhandler.GetEventId(query2));
+                SetProgress(total, done);
+            }
+            else
+                SetProgress(0, 0);
         }
 
         //This function sets the task progress status.
         private void SetProgress(int total, int done)
         {
             double t = total, d = done;
-            int res = Convert.ToInt32(d / t * 100);
+            int res = 0;
+            if(t != 0)
+                Convert.ToInt32(d / t * 100);
             myProgressBar.Value = res;
             if (res <= 25)
             {

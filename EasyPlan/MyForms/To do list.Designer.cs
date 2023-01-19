@@ -29,18 +29,23 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ClearBtn = new System.Windows.Forms.Button();
             this.AddBtn = new System.Windows.Forms.Button();
             this.myProgressBar = new Guna.UI2.WinForms.Guna2CircleProgressBar();
+            this.precent = new System.Windows.Forms.Label();
             this.diaryDBDataSet = new Win1.DiaryDBDataSet();
             this.tasksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tasksTableAdapter = new Win1.DiaryDBDataSetTableAdapters.TasksTableAdapter();
             this.diaryDBDataSet1 = new Win1.DiaryDBDataSet();
             this.tasksBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.d = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Task = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Deadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tasksBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.tasksBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.diaryDBDataSet11 = new Win1.DiaryDBDataSet1();
@@ -48,11 +53,6 @@
             this.tasksTableAdapter1 = new Win1.DiaryDBDataSet1TableAdapters.TasksTableAdapter();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.DeleteBtn = new System.Windows.Forms.Button();
-            this.d = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Task = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Deadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precent = new System.Windows.Forms.Label();
             this.myProgressBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.diaryDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tasksBindingSource)).BeginInit();
@@ -106,6 +106,18 @@
             this.myProgressBar.TabIndex = 4;
             this.myProgressBar.Text = "guna2CircleProgressBar1";
             // 
+            // precent
+            // 
+            this.precent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.precent.AutoSize = true;
+            this.precent.Font = new System.Drawing.Font("Impact", 34.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.precent.Location = new System.Drawing.Point(48, 63);
+            this.precent.Name = "precent";
+            this.precent.Size = new System.Drawing.Size(118, 71);
+            this.precent.TabIndex = 0;
+            this.precent.Text = "0/0";
+            this.precent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // diaryDBDataSet
             // 
             this.diaryDBDataSet.DataSetName = "DiaryDBDataSet";
@@ -134,24 +146,24 @@
             // 
             this.guna2DataGridView1.AllowUserToAddRows = false;
             this.guna2DataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
+            this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.guna2DataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.guna2DataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedVertical;
             this.guna2DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Montserrat", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Montserrat", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.guna2DataGridView1.ColumnHeadersHeight = 37;
             this.guna2DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.guna2DataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -159,14 +171,14 @@
             this.Task,
             this.ID,
             this.Deadline});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightCyan;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.MidnightBlue;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.LightCyan;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.MidnightBlue;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle15;
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.guna2DataGridView1.Location = new System.Drawing.Point(38, 114);
             this.guna2DataGridView1.Name = "guna2DataGridView1";
@@ -202,6 +214,35 @@
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.LightCyan;
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.MidnightBlue;
             this.guna2DataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.guna2DataGridView1_CellContentClick);
+            // 
+            // d
+            // 
+            this.d.FillWeight = 50F;
+            this.d.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.d.HeaderText = "Done";
+            this.d.MinimumWidth = 6;
+            this.d.Name = "d";
+            this.d.ToolTipText = "a";
+            // 
+            // Task
+            // 
+            this.Task.HeaderText = "Task";
+            this.Task.MinimumWidth = 6;
+            this.Task.Name = "Task";
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // Deadline
+            // 
+            this.Deadline.FillWeight = 50F;
+            this.Deadline.HeaderText = "Deadline";
+            this.Deadline.MinimumWidth = 6;
+            this.Deadline.Name = "Deadline";
             // 
             // tasksBindingSource2
             // 
@@ -245,46 +286,6 @@
             this.DeleteBtn.Text = "Delete task";
             this.DeleteBtn.UseVisualStyleBackColor = true;
             this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
-            // 
-            // d
-            // 
-            this.d.FillWeight = 50F;
-            this.d.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.d.HeaderText = "Done";
-            this.d.MinimumWidth = 6;
-            this.d.Name = "d";
-            this.d.ToolTipText = "a";
-            // 
-            // Task
-            // 
-            this.Task.HeaderText = "Task";
-            this.Task.MinimumWidth = 6;
-            this.Task.Name = "Task";
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // Deadline
-            // 
-            this.Deadline.FillWeight = 50F;
-            this.Deadline.HeaderText = "Deadline";
-            this.Deadline.MinimumWidth = 6;
-            this.Deadline.Name = "Deadline";
-            // 
-            // precent
-            // 
-            this.precent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.precent.AutoSize = true;
-            this.precent.Font = new System.Drawing.Font("Impact", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.precent.Location = new System.Drawing.Point(40, 62);
-            this.precent.Name = "precent";
-            this.precent.Size = new System.Drawing.Size(123, 75);
-            this.precent.TabIndex = 0;
-            this.precent.Text = "0/0";
             // 
             // To_do_list
             // 
